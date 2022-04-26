@@ -4,7 +4,7 @@
 #include "mlx.h"
 
 
-typedef struct	s_game {
+typedef struct	s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -75,42 +75,47 @@ void	create_tiles(t_data *img, int color)
 		i = 0;
 	}
 }
-void	create_img(void *mlx, int img_width, int img_height)
+
+
+void	*create_img(void *mlx, /*void *mlx_win,*/ int img_width, int img_height)
 {
-	//void	*img;
-	char	*relative_path = "./D.png";
+	t_data	img;
+	int taille;
 
-	mlx_xpm_file_to_image(&mlx, relative_path, &img_width, &img_height);
-	
+	char	*relative_path = "S.xpm";
+	img.img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+	if (img.img == NULL)
+	{
+		printf("CWEDFWE");
+		exit(EXIT_FAILURE);
+	}
+	return(img.img);
 }
-
+/*
 int	close(int keycode, t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
 }
-
+*/
 int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
-	t_data	img;
+	//t_data	img;
 	t_data	img2;
 //	struct t_point p_hg;
 //	struct t_point p_bd;
 	
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "so_long");
-	img.img = mlx_new_image(mlx, 1920, 1080);
-
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	img2.img = create_img(mlx, 400, 900);
-	
+	mlx_win = mlx_new_window(mlx, 2000, 1080, "so_long");
+	//img.img = mlx_new_image(mlx, 1920, 1080);
+	//img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 //	create_tile(100, 100, &img, 0x00FF0000);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	img2.img = create_img(mlx, 900 , 900);
+	//mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_put_image_to_window(mlx, mlx_win, img2.img, 0, 0);
-
-	close(27, )
+//	close(27, )
 	mlx_loop(mlx);
 }
