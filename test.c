@@ -5,6 +5,8 @@
 
 
 typedef struct	s_data {
+	void	*mlx;
+	void	*mlx_win;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -77,13 +79,16 @@ void	create_tiles(t_data *img, int color)
 }
 
 
-void	*create_img(void *mlx, /*void *mlx_win,*/ int img_width, int img_height)
+void	*create_img(void *mlx, char *path)
 {
 	t_data	img;
 	int taille;
+	int width;
+	int height;
 
-	char	*relative_path = "S.xpm";
-	img.img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+	width = 200;
+	height = 200;
+	img.img = mlx_xpm_file_to_image(mlx, path, &width , &height);
 	if (img.img == NULL)
 	{
 		printf("CWEDFWE");
@@ -91,6 +96,39 @@ void	*create_img(void *mlx, /*void *mlx_win,*/ int img_width, int img_height)
 	}
 	return(img.img);
 }
+
+void *create_wall(void *mlx, void *mlx_win)
+{
+	t_data	img;
+	int	i;
+	int	j;
+	int max_i;
+	int max_j;
+
+	i = 0;
+	j = 0;
+	max_i = 8;
+	max_j = 7;
+
+	while(j <= max_j)
+	{
+		while (i <= max_i)
+		{
+			if ((i == max_i && j <=	 max_j) || (i <= max_i && j == max_j) || \
+			(i == 0 && j <=	 max_j) || (i <= max_i && j == 0))
+			{
+				img.img = create_img(mlx, "Wall.xpm");
+				mlx_put_image_to_window(mlx, mlx_win, img.img, i * 200, j * 200);
+			}
+			i++;
+		}
+		j++;
+		i = 0;
+	}
+}
+
+
+
 /*
 int	close(int keycode, t_vars *vars)
 {
@@ -98,24 +136,25 @@ int	close(int keycode, t_vars *vars)
 	return (0);
 }
 */
+
+t_data new_window(t_data img)
+{
+	int width;
+	int	height;
+	 
+	width = 2500;
+	height = 1600;
+	img.mlx = mlx_init();
+	img.mlx_win = mlx_new_window(img.mlx, width, height, "so_long");
+	return (img);
+}
+
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	//t_data	img;
-	t_data	img2;
-//	struct t_point p_hg;
-//	struct t_point p_bd;
+	t_data	img;
 	
+	img = new_window(img);
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 2000, 1080, "so_long");
-	//img.img = mlx_new_image(mlx, 1920, 1080);
-	//img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-//	create_tile(100, 100, &img, 0x00FF0000);
-	img2.img = create_img(mlx, 900 , 900);
-	//mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_put_image_to_window(mlx, mlx_win, img2.img, 0, 0);
-//	close(27, )
-	mlx_loop(mlx);
+	create_wall(img.mlx, img.mlx_win);
+	mlx_loop(img.mlx);
 }
