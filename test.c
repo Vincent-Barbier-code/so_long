@@ -1,18 +1,16 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include "mlx.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
+/*   Updated: 2022/05/27 21:12:43 by vbarbier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-typedef struct	s_data {
-	void	*mlx;
-	void	*mlx_win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+#include "so_long.h"
 
 typedef struct	s_point {
 	int	coord_x;
@@ -127,15 +125,16 @@ void *create_wall(void *mlx, void *mlx_win)
 	}
 }
 
-
-
-/*
-int	close(int keycode, t_vars *vars)
+int	win_close(t_data *img)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
+	//mlx_destroy_image(img->mlx, img->img);
+	//mlx_clear_window()
+	mlx_destroy_window(img->mlx, img->mlx_win);
+	mlx_destroy_display(img->mlx);
+	//FREE TOUT A FAIRE
+	exit(0);
+	return(0);
 }
-*/
 
 t_data new_window(t_data img)
 {
@@ -149,6 +148,16 @@ t_data new_window(t_data img)
 	return (img);
 }
 
+int	key_hook(int key, t_data *img)
+{
+	if (key == ESC)
+	{
+		win_close(img);
+		return (1);
+	}
+	return (0);
+}
+
 int	main(void)
 {
 	t_data	img;
@@ -156,5 +165,8 @@ int	main(void)
 	img = new_window(img);
 
 	create_wall(img.mlx, img.mlx_win);
+//	close_win(27, img);
+	mlx_key_hook(img.mlx_win, key_hook, &img);
+	mlx_hook(img.mlx_win, 17, 1L<<2, win_close, &img);
 	mlx_loop(img.mlx);
 }
