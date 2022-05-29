@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/29 20:09:53 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 01:52:00 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,17 @@ typedef struct	s_data {
 	int			line_length;
 //	int			endian;
 }				t_data;
+
+//img.c
+void	error_destroy_imgs(t_data *data, int cmp);
+void	error_img(t_data *img, int cmp);
+void	*load_img(void *asset, t_data *data, char *path);
+void	load_imgs(t_data *data);
+void	destroy_imgs(t_data *data);
+
+//windows.c
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		win_close(t_data *img);
+void	new_window(t_data *img);
 
 #endif
