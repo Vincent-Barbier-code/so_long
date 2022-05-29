@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/27 20:59:27 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/29 20:09:53 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,24 @@
 #include <string.h>
 #include "mlx.h"
 
+typedef struct s_assets
+{
+    void     *grid;
+    void     *wall;
+    void     *player;
+    void     *collec1;
+    void     *collec2;
+    void     *exit;
+}    t_assets;
+
 typedef struct	s_data {
-	void	*mlx;
-	void	*mlx_win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	void		*mlx;
+	void		*mlx_win;
+	t_assets	assets;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+//	int			endian;
 }				t_data;
 
 #endif
