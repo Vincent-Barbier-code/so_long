@@ -1,4 +1,4 @@
-SRC = test.c windows.c img.c
+SRC = test.c windows.c img.c parsing.c
 OBJ = ${SRC:.c=.o}
 NAME = so_long
 FLAG = -Wall -Wextra -Werror #-g -fsanitize=address -g3

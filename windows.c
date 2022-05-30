@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 00:59:00 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 01:51:01 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 03:00:12 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 int	win_close(t_data *img)
@@ -28,14 +28,14 @@ int	win_close(t_data *img)
 	mlx_destroy_display(img->mlx);
 	free(img->mlx);
 	exit(0);
-	return(0);
+	return (0);
 }
 
 void	new_window(t_data *img)
 {
-	int width;
+	int	width;
 	int	height;
-	 
+
 	width = 2500;
 	height = 1600;
 	img->mlx = mlx_init();

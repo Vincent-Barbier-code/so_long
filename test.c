@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 01:52:49 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 02:58:16 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	*create_wall(t_data data)
 {
 	int	i;
 	int	j;
-	int max_i;
-	int max_j;
+	int	max_i;
+	int	max_j;
 
 	i = 0;
 	j = 0;
@@ -47,14 +47,15 @@ int	key_hook(int key, t_data *img)
 	return (0);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_data	img;
 
+	parsing(ac, av);
 	new_window(&img);
 	load_imgs(&img);
 	create_wall(img);
 	mlx_key_hook(img.mlx_win, key_hook, &img);
-	mlx_hook(img.mlx_win, 17, 1L<<2, win_close, &img);
+	mlx_hook(img.mlx_win, 17, 1L << 2, win_close, &img);
 	mlx_loop(img.mlx);
 }

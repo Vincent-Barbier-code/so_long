@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 00:55:50 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 01:57:21 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 02:56:36 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	error_img(t_data *img, int cmp)
 
 void	*load_img(void *asset, t_data *data, char *path)
 {
-	int taille;
-	int width;
-	int height;
+	int			taille;
+	int			width;
+	int			height;
 	static int	cmp = 0;
 
 	width = 200;
 	height = 200;
-	asset = mlx_xpm_file_to_image(data->mlx, path, &width , &height);
+	asset = mlx_xpm_file_to_image(data->mlx, path, &width, &height);
 	if (asset == NULL)
 	{
 		printf("Error chargement image xpm");
