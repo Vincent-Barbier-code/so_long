@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 05:19:39 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 14:38:44 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_assets
 typedef struct	s_data {
 	void		*mlx;
 	void		*mlx_win;
+	char		**map;
 	t_assets	assets;
 	char		*addr;
 	int			bits_per_pixel;
@@ -66,5 +67,12 @@ void	parsing(int ac, char *av);
 //int		ft_strlen(char *str);
 int		ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
+
+//map.c
+void	*who_asset(t_data data, char c);
+char	*new_map(t_data data, char *str);
+int		cmp_ligne(char *nom);
+void	init_map(t_data *data, char *nom, int ligne);
+
 
 #endif

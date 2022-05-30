@@ -6,12 +6,12 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 06:06:23 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 14:37:43 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+/*
 void	*create_wall(t_data data)
 {
 	int	i;
@@ -36,7 +36,7 @@ void	*create_wall(t_data data)
 		i = 0;
 	}
 }
-
+*/
 int	key_hook(int key, t_data *img)
 {
 	if (key == ESC)
@@ -47,58 +47,22 @@ int	key_hook(int key, t_data *img)
 	return (0);
 }
 
-void	*who_asset(t_data data, char *str)
-{
-	void *asset;
-
-	printf("%c",*str);
-	if (*str == '1')
-		asset = data.assets.wall;
-	if (*str == '0')
-		asset = data.assets.grid;
-//	if (*str == "C") // Ajouter collectibles
-	if (*str == 'E')
-		asset = data.assets.exit;
-	if (*str == 'P')
-		asset = data.assets.player;
-	return (asset);
-}
-
-void	new_map(t_data data, char *str)
-{
-	int	i;
-	static int	j = 0;
-	void *asset;
-
-	i = 0;
-	while (*str)
-	{
-		asset = who_asset(data, str);
-		printf("%c",*str);
-			mlx_put_image_to_window(data.mlx, data.mlx_win, asset, i * 200, j * 200);
-		str++;
-		i++;
-	}
-	printf("%c",*str);
-	j++;
-}
-
 int	main(int ac, char **av)
 {
 	t_data	img;
-	int		fd;
-	char	*str;
+
+	
 
 	parsing(ac, av[1]);
 	new_window(&img);
 	load_imgs(&img);
-	//create_wall(img);
-	fd = open(av[1], O_RDONLY);
-	while(str = get_next_line(fd))
-	{
-		new_map(img, str);
-		free(str);
-	}
+
+	// creer verif map
+	// bouge player et tiles (finis?)
+	//compte mv player (EZ)
+	init_map(&img, av[1], cmp_ligne(av[1]));
+	
+
 	mlx_key_hook(img.mlx_win, key_hook, &img);
 	mlx_hook(img.mlx_win, 17, 1L << 2, win_close, &img);
 	mlx_loop(img.mlx);
