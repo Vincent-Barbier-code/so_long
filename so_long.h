@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 14:38:44 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:21:17 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,12 @@ void	ft_putstr_fd(char *str, int fd);
 //map.c
 void	*who_asset(t_data data, char c);
 char	*new_map(t_data data, char *str);
-int		cmp_ligne(char *nom);
+int		ligne_verif(char *nom, t_data *data);
 void	init_map(t_data *data, char *nom, int ligne);
 
+//verif_map.c
+int		verif_nb (char *str);
+int		verif(char *str);
+void	init_map(t_data *data, char *nom, int ligne);
 
 #endif

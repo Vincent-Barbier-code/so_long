@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:33:31 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 14:37:48 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:32:58 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	*who_asset(t_data data, char c)
 		asset = data.assets.wall;
 	if (c == '0')
 		asset = data.assets.grid;
-//	if (c == "C") // Ajouter collectibles
+	if (c == 'C') // Ajouter collectibles
+		asset = data.assets.collec1;
 	if (c == 'E')
 		asset = data.assets.exit;
 	if (c == 'P')
@@ -35,7 +36,7 @@ char	*new_map(t_data data, char *str)
 	void		*asset;
 
 	i = 0;
-	while (str[i])
+	while (str[i + 1])
 	{
 		asset = who_asset(data, str[i]);
 		mlx_put_image_to_window(data.mlx, data.mlx_win, asset, i * 200, j * 200);	
@@ -45,35 +46,15 @@ char	*new_map(t_data data, char *str)
 	return (str);
 }
 
-int	cmp_ligne(char *nom)
-{
-	int ligne;
-	int		fd;
-	char *str;
-
-	ligne = 1;
-	fd = open(nom, O_RDONLY);
-	while (1)
-	{
-		str = get_next_line(fd);
-		if (str == NULL)
-		{
-			close(fd);
-			return (ligne);
-		}
-		ligne++;
-		free (str);
-	}
-}
-
 void init_map(t_data *data, char *nom, int ligne)
 {
 	int		fd;
 	char	*str;
 	int		i;
+
 	i = 0;
 	fd = open(nom, O_RDONLY);
-	data->map = malloc (sizeof(data->map) * ligne);	
+	data->map = malloc(sizeof(data->map) * (ligne + 1));	
 	while (1)
 	{
 		str = get_next_line(fd);
@@ -84,8 +65,8 @@ void init_map(t_data *data, char *nom, int ligne)
 			return ;
 		}
 		data->map[i] = ft_strdup(new_map(*data, str));
-		free(str);
 		printf("%s", data->map[i]);
+		free(str);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 14:37:43 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:27:04 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	key_hook(int key, t_data *img)
 int	main(int ac, char **av)
 {
 	t_data	img;
-
+	int		ligne;
 	
 
 	parsing(ac, av[1]);
@@ -60,8 +60,9 @@ int	main(int ac, char **av)
 	// creer verif map
 	// bouge player et tiles (finis?)
 	//compte mv player (EZ)
-	init_map(&img, av[1], cmp_ligne(av[1]));
 	
+	ligne = 5;//ligne_verif(av[1], &img);
+	init_map(&img, av[1], ligne);
 
 	mlx_key_hook(img.mlx_win, key_hook, &img);
 	mlx_hook(img.mlx_win, 17, 1L << 2, win_close, &img);

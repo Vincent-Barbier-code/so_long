@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 02:20:22 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 05:19:19 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:43:01 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	error_parsing(int cas)
 		ft_putstr_fd("error : le fichier n est pas un .ber", 1);
 	if (cas == 2)
 		ft_putstr_fd("error : nombres d arguments", 1);
-	exit(0);
+	exit(EXIT_FAILURE);
 }
 
 void	parsing(int ac, char *av)

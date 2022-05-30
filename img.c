@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 00:55:50 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 02:56:36 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:22:19 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	error_destroy_imgs(t_data *data, int cmp)
 		mlx_destroy_image(data->mlx, data->assets.player);
 	if (cmp > 3)
 		mlx_destroy_image(data->mlx, data->assets.exit);
+	if (cmp > 4)
+		mlx_destroy_image(data->mlx, data->assets.collec1);
 }
 
 void	error_img(t_data *img, int cmp)
@@ -46,7 +48,7 @@ void	*load_img(void *asset, t_data *data, char *path)
 	asset = mlx_xpm_file_to_image(data->mlx, path, &width, &height);
 	if (asset == NULL)
 	{
-		printf("Error chargement image xpm");
+		ft_putstr_fd("error : chargement image xpm", 1);
 		error_img(data, cmp);
 		exit(EXIT_FAILURE);
 	}
@@ -60,7 +62,7 @@ void	load_imgs(t_data *data)
 	data->assets.grid = load_img(data->assets.grid, data, "Grid.xpm");
 	data->assets.player = load_img(data->assets.player, data, "Player.xpm");
 	data->assets.exit = load_img(data->assets.exit, data, "Exit.xpm");
-//	load_img(data.assets.wall, data.mlx, "Wall.xpm"); Ajouter collectible
+	data->assets.collec1 = load_img(data->assets.exit, data, "Exit.xpm");
 }
 
 void	destroy_imgs(t_data *data)
@@ -73,4 +75,6 @@ void	destroy_imgs(t_data *data)
 		mlx_destroy_image(data->mlx, data->assets.player);
 	if (data->assets.exit)
 		mlx_destroy_image(data->mlx, data->assets.exit);
+	if (data->assets.collec1)
+		mlx_destroy_image(data->mlx, data->assets.collec1);
 }
