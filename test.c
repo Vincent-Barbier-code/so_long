@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 18:55:36 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/31 00:45:30 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,10 @@ int	main(int ac, char **av)
 	new_window(&img);
 	load_imgs(&img);
 
-	// creer verif map
 	// bouge player et tiles (finis?)
 	//compte mv player (EZ)
 	
-	ligne = ligne_verif(av[1], &img);
+	ligne = ligne_verif(av[1], &img); // corriger verif lorsque map a un signe non reconnu
 	init_map(&img, av[1], ligne);
 	verif_wall(&img);
 

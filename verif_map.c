@@ -6,28 +6,58 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:09:58 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 19:04:56 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/31 00:22:38 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+int	max_j(t_data *data)
+{
+	int	j;
+
+	j = 0;
+	while (data->map[j])
+	{
+		j++;
+	}
+	return (j - 1);
+}
+
+int	max_i(t_data *data)
+{
+	return (ft_strlen(data->map[0]) - 1);
+}
+
+void	error_wall(t_data *data)
+{
+	ft_putstr_fd("error : Map non ferme par des murs", 1);
+	win_close(data);
+}
 
 int verif_wall(t_data *data)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (data->map[0][i])
+	j = 0;
+	while (data->map[j])
 	{
-		if (data->map[0][i] != '1')
+		i = 0;
+		while (data->map[j][i])
 		{
-			ft_putstr_fd("error : Map non ferme par des murs", 1);
-			win_close(data);
+			if (data->map[0][i] != '1' && i < max_i(data))
+				error_wall(data);
+			if (data->map[j][0] != '1')
+				error_wall(data);
+			if (data->map[max_j(data)][i] != '1' && i < max_i(data))
+				error_wall(data);
+			if (data->map[j][max_i(data) - 1] != '1')
+				error_wall(data);
+			i++;
 		}
-		
-		
-		i++;
+		j++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:33:31 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 18:59:52 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/31 01:25:45 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,26 @@ void	free_map(t_data *data)
 	free(data->map);
 }
 
-void	*who_asset(t_data data, char c)
+void	*who_asset(t_data data, char *str, char c)
 {
 	void	*asset;
 
 	if (c == '1')
 		asset = data.assets.wall;
-	if (c == '0')
+	else if (c == '0')
 		asset = data.assets.grid;
-	if (c == 'C') // Ajouter collectibles
+	else if (c == 'C') // Ajouter collectibles
 		asset = data.assets.collec1;
-	if (c == 'E')
+	else if (c == 'E')
 		asset = data.assets.exit;
-	if (c == 'P')
+	else if (c == 'P')
 		asset = data.assets.player;
+	else
+	{
+		free(str);
+		free_map(&data);
+		error_map(&data);
+	}
 	return (asset);
 }
 
@@ -51,7 +57,7 @@ char	*new_map(t_data data, char *str)
 	i = 0;
 	while (str[i + 1])
 	{
-		asset = who_asset(data, str[i]);
+		asset = who_asset(data, str, str[i]);
 		mlx_put_image_to_window(data.mlx, data.mlx_win, asset, i * 200, j * 200);	
 		i++;
 	}
