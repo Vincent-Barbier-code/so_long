@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 02:20:22 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 03:43:52 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 05:19:19 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	error_parsing(int cas)
 	exit(0);
 }
 
-void	parsing(int ac, char **av)
+void	parsing(int ac, char *av)
 {
 	char	*ber;
 	int		len;
@@ -31,19 +31,19 @@ void	parsing(int ac, char **av)
 	ber = ".ber";
 	if (ac == 2)
 	{
-		len = ft_strlen(av[1]);
+		len = ft_strlen(av);
 		if (len <= 4)
 			error_parsing(0);
 		while (len - 4)
 		{
 			len--;
-			av[1]++;
+			av++;
 		}
-		while (*av[1])
+		while (*av)
 		{
-			if (*av[1] != *ber)
+			if (*av != *ber)
 				error_parsing(1);
-			av[1]++;
+			av++;
 			ber++;
 		}
 	}

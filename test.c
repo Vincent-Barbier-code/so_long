@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 03:49:31 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 05:28:52 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,15 @@ int	key_hook(int key, t_data *img)
 int	main(int ac, char **av)
 {
 	t_data	img;
+	int		fd;
+	char	*str;
 
-	parsing(ac, av);
+	parsing(ac, av[1]);	
+	fd = open(av[1], O_RDONLY);
+	while(str = get_next_line(fd))
+	{
+		printf("%s",(str));
+	}
 	new_window(&img);
 	load_imgs(&img);
 	create_wall(img);
