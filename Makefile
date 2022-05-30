@@ -1,8 +1,11 @@
-SRC = test.c windows.c img.c parsing.c
+SRC = test.c windows.c img.c parsing.c basique.c \
+	$(PATH_GNL)get_next_line_utils.c \
+	$(PATH_GNL)get_next_line.c
 OBJ = ${SRC:.c=.o}
 NAME = so_long
 FLAG = -Wall -Wextra -Werror #-g -fsanitize=address -g3
 DEPS = so_long.h Makefile
+PATH_GNL = ./get_next_line/
 all : $(NAME)
 
 %.o: %.c
@@ -13,4 +16,12 @@ $(NAME): $(OBJ)
 
 $(OBJ) : $(DEPS)
 
-.PHONY : all
+clean :
+	rm -f $(OBJ)
+
+fclean : clean
+	rm -f $(NAME)
+
+re : fclean all
+
+.PHONY : all clean fclean re

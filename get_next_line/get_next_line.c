@@ -6,11 +6,13 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:28:02 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/01/09 20:33:26 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 04:14:49 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+#define BUFFER_SIZE 1
 
 static int	ft_read_buf(int fd, char **str)
 {

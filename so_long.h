@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 02:37:37 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 04:00:31 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "mlx.h"
+#include "./get_next_line/get_next_line.h"
 
 typedef struct s_assets
 {
@@ -57,6 +59,11 @@ int		win_close(t_data *img);
 void	new_window(t_data *img);
 
 //parsing.c
-void	parsing(int ac, char **av);	
+void	parsing(int ac, char **av);
+
+//basique.c
+//int		ft_strlen(char *str);
+int		ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *str, int fd);
 
 #endif
