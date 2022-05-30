@@ -6,11 +6,24 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:33:31 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 18:32:58 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:59:52 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_map(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->map[i])
+	{
+		free(data->map[i]);
+		i++;
+	}
+	free(data->map);
+}
 
 void	*who_asset(t_data data, char c)
 {

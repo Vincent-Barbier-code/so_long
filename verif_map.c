@@ -6,11 +6,30 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:09:58 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 18:14:48 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:04:56 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+
+int verif_wall(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->map[0][i])
+	{
+		if (data->map[0][i] != '1')
+		{
+			ft_putstr_fd("error : Map non ferme par des murs", 1);
+			win_close(data);
+		}
+		
+		
+		i++;
+	}
+}
 
 int	verif_rect(char *str)
 {
@@ -51,11 +70,10 @@ int	verif_nb (char *str)
 
 int	verif(char *str)
 {
-	if (verif_rect(str))
-		return (1);
-	else
-		return (0);
-	if (verif_nb(str))
+	static int flag = 1;
+	if (!verif_rect(str))
+		flag = 0;
+	if (verif_nb(str) && flag)
 		return (1);
 	return (0);
 }
@@ -96,11 +114,8 @@ int	ligne_verif(char *nom, t_data *data)
 			close(fd);
 			return (ligne);
 		}
-		else
-		{
 		ok = verif(str);
 		ligne++;
 		free(str);
-		}
 	}
 }

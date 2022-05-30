@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 18:27:04 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:55:36 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ int	main(int ac, char **av)
 	// bouge player et tiles (finis?)
 	//compte mv player (EZ)
 	
-	ligne = 5;//ligne_verif(av[1], &img);
+	ligne = ligne_verif(av[1], &img);
 	init_map(&img, av[1], ligne);
+	verif_wall(&img);
 
 	mlx_key_hook(img.mlx_win, key_hook, &img);
 	mlx_hook(img.mlx_win, 17, 1L << 2, win_close, &img);
