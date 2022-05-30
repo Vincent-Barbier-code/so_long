@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 05:28:52 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/30 06:00:11 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,65 @@ int	key_hook(int key, t_data *img)
 	return (0);
 }
 
+void	*who_asset(t_data *data, char *str)
+{
+	void *asset;
+
+	printf("%c",*str);
+	if (*str == '1')
+		asset = data->assets.wall;
+	if (*str == '0')
+		asset = data->assets.grid;
+//	if (*str == "C") // Ajouter collectibles
+	if (*str == 'E')
+		asset = data->assets.exit;
+	if (*str == 'P')
+		asset = data->assets.player;
+	return (asset);
+}
+
+void	new_map(t_data data, char *str)
+{
+	int	i;
+	static int	j = 0;
+	void *asset;
+
+	i = 0;
+	while (*str)
+	{
+		printf("%c",*str);
+		if (*str == '1')
+			mlx_put_image_to_window(data.mlx, data.mlx_win, data.assets.wall, i * 200, j * 200);
+		if (*str == '0')
+			mlx_put_image_to_window(data.mlx, data.mlx_win, data.assets.grid, i * 200, j * 200);
+	//	if (*str == "C") // Ajouter collectibles
+		if (*str == 'E')
+			mlx_put_image_to_window(data.mlx, data.mlx_win, data.assets.exit, i * 200, j * 200);
+		if (*str == 'P')
+			mlx_put_image_to_window(data.mlx, data.mlx_win, data.assets.player, i * 200, j * 200);
+		str++;
+		i++;
+	}
+	printf("%c",*str);
+	j++;
+}
+
 int	main(int ac, char **av)
 {
 	t_data	img;
 	int		fd;
 	char	*str;
 
-	parsing(ac, av[1]);	
+	parsing(ac, av[1]);
+	new_window(&img);
+	load_imgs(&img);
+	//create_wall(img);
 	fd = open(av[1], O_RDONLY);
 	while(str = get_next_line(fd))
 	{
-		printf("%s",(str));
+		new_map(img, str);	
 	}
-	new_window(&img);
-	load_imgs(&img);
-	create_wall(img);
+
 	mlx_key_hook(img.mlx_win, key_hook, &img);
 	mlx_hook(img.mlx_win, 17, 1L << 2, win_close, &img);
 	mlx_loop(img.mlx);
