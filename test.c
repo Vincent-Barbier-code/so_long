@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/31 00:45:30 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/31 18:13:48 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,35 @@ void	*create_wall(t_data data)
 	}
 }
 */
+
 int	key_hook(int key, t_data *img)
 {
+	static int	i = 0;
+
 	if (key == ESC)
 	{
 		win_close(img);
 		return (1);
+	}
+	if (key == TOP)
+	{
+		i = move_top(img, i);
+		aff_map(img);
+	}
+	if (key == BOT)
+	{
+		i = move_bot(img, i);
+		aff_map(img);
+	}
+	if (key == LEFT)
+	{
+		i = move_left(img, i);
+		aff_map(img);
+	}
+	if (key == RIGHT)
+	{
+		i = move_right(img, i);
+		aff_map(img);
 	}
 	return (0);
 }
@@ -57,8 +80,7 @@ int	main(int ac, char **av)
 	new_window(&img);
 	load_imgs(&img);
 
-	// bouge player et tiles (finis?)
-	//compte mv player (EZ)
+	// Prendre collectible et exit(finis?)
 	
 	ligne = ligne_verif(av[1], &img); // corriger verif lorsque map a un signe non reconnu
 	init_map(&img, av[1], ligne);

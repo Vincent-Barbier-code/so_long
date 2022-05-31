@@ -1,4 +1,5 @@
-SRC = test.c windows.c img.c parsing.c basique.c map.c verif_map.c\
+SRC = test.c windows.c img.c parsing.c basique.c map.c verif_map.c \
+	move_player.c where_player.c \
 	$(PATH_GNL)get_next_line_utils.c \
 	$(PATH_GNL)get_next_line.c
 OBJ = ${SRC:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:09:58 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/31 00:22:38 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/31 21:30:12 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,14 @@ int	verif_nb (char *str)
 		// Ajoute un cas pour le collectible 2 si j en rajoute
 		if (str[i] == 'C')
 			collect++;
-		if (str[i] == 'E')
+		else if (str[i] == 'E')
 			exit++;
-		if (str[i] == 'P')
+		else if (str[i] == 'P')
 			player++;
+		else if (str[i] == '1' || str[i] == '0' || str[i] == '\n')
+			;
+		else
+			return (0);
 		i++;
 	}
 	if (collect > 0 && player == 1 && exit == 1)
@@ -100,7 +104,8 @@ int	verif_nb (char *str)
 
 int	verif(char *str)
 {
-	static int flag = 1;
+	static int	flag = 1;
+
 	if (!verif_rect(str))
 		flag = 0;
 	if (verif_nb(str) && flag)
@@ -119,6 +124,18 @@ void	error_map(t_data *img)
 	exit(EXIT_FAILURE);
 }
 
+void	suite_lv(int ok, char *str, int fd, t_data *data)
+{
+	if (!ok)
+	{
+		free(str);
+		close(fd);
+		error_map(data);
+	}
+	free(str);
+	close(fd);
+}
+
 int	ligne_verif(char *nom, t_data *data)
 {
 	int		ligne;
@@ -128,21 +145,13 @@ int	ligne_verif(char *nom, t_data *data)
 
 	ligne = 0;
 	fd = open(nom, O_RDONLY);
-	ok = 1;
 	while (1)
 	{
 		str = get_next_line(fd);
 		if (str == NULL)
 		{
-			if (!ok)
-			{
-				free(str);
-				close(fd);
-				error_map(data);
-			}
-			free(str);
-			close(fd);
-			return (ligne);
+			suite_lv(ok, str, fd, data);
+			return(ligne);
 		}
 		ok = verif(str);
 		ligne++;

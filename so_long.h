@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/31 00:30:27 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/31 18:08:25 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,18 @@ int		verif_nb (char *str);
 int		verif(char *str);
 void	init_map(t_data *data, char *nom, int ligne);
 void	error_map(t_data *img);
+//void	aff_map(t_data data);
+void	aff_map(t_data *data);
+
+//move_player.c
+int	move_top(t_data *data, int move);
+int	move_bot(t_data *data, int move);
+int	move_left(t_data *data, int move);
+int	move_right(t_data *data, int move);
+
+//where_player.c
+int	get_player_i(t_data data);
+int	get_player_j(t_data data);
+
 
 #endif

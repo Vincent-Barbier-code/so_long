@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:33:31 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/31 01:25:45 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:40:00 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,44 @@ void	*who_asset(t_data data, char *str, char c)
 		error_map(&data);
 	}
 	return (asset);
+}
+void	*who_asset2(t_data data, char c)
+{
+	void	*asset;
+
+	if (c == '1')
+		asset = data.assets.wall;
+	else if (c == '0')
+		asset = data.assets.grid;
+	else if (c == 'C') // Ajouter collectibles
+		asset = data.assets.collec1;
+	else if (c == 'E')
+		asset = data.assets.exit;
+	else if (c == 'P')
+		asset = data.assets.player;
+	return (asset);
+}
+
+void	aff_map(t_data *data)
+{
+	int			i;
+	int			j;
+	void		*asset;
+
+	i = 0;
+	j = 0;
+
+	while (data->map[j])
+	{
+		while (data->map[j][i + 1])
+		{
+			asset = who_asset2(*data, data->map[j][i]);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, asset, i * 200, j * 200);	
+			i++;
+		}
+		i = 0;
+		j++;
+	}
 }
 
 char	*new_map(t_data data, char *str)
