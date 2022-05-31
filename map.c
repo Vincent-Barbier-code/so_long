@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:33:31 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/01 00:47:04 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/01 01:10:42 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void init_map(t_data *data, char *nom, int ligne)
 	while (str)
 	{
 		data->map[i] = ft_strdup(new_map(*data, str));
-		printf("%s", data->map[i]);
+		//printf("%s", data->map[i]);
 		free(str);
 		i++;
 		str = get_next_line(fd);

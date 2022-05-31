@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/01 00:50:27 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/01 01:00:14 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	main(int ac, char **av)
 	load_imgs(&img);
 
 	// Prendre collectible et exit(finis?)
+	// Normer et enlever les printf
+
 	ligne = ligne_verif(av[1], &img);
 	init_map(&img, av[1], ligne);
 	verif_wall(&img);
