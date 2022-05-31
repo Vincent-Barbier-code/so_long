@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:57:51 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/31 18:13:48 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/01 00:50:27 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ int	main(int ac, char **av)
 	load_imgs(&img);
 
 	// Prendre collectible et exit(finis?)
-	
-	ligne = ligne_verif(av[1], &img); // corriger verif lorsque map a un signe non reconnu
+	ligne = ligne_verif(av[1], &img);
 	init_map(&img, av[1], ligne);
 	verif_wall(&img);
 

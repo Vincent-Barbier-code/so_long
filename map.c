@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:33:31 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/31 17:40:00 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/01 00:47:04 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,19 +111,18 @@ void init_map(t_data *data, char *nom, int ligne)
 
 	i = 0;
 	fd = open(nom, O_RDONLY);
-	data->map = malloc(sizeof(data->map) * (ligne + 1));	
-	while (1)
+	data->map = malloc(sizeof(data->map) * (ligne + 1));
+	str = get_next_line(fd);
+	while (str)
 	{
-		str = get_next_line(fd);
-		if (str == NULL)
-		{
-			data->map[i] = '\0';
-			close(fd);
-			return ;
-		}
 		data->map[i] = ft_strdup(new_map(*data, str));
 		printf("%s", data->map[i]);
 		free(str);
 		i++;
+		str = get_next_line(fd);
 	}
+	free(str);
+	data->map[i] = '\0';
+	close(fd);
+	return ;
 }

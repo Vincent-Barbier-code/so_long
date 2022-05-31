@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:09:58 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/31 21:30:12 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/01 00:40:35 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ int	verif_nb (char *str)
 		else if (str[i] == '1' || str[i] == '0' || str[i] == '\n')
 			;
 		else
+		{
+			printf("str = %c", str[i]);
 			return (0);
+		}
 		i++;
 	}
 	if (collect > 0 && player == 1 && exit == 1)

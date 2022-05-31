@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/31 18:08:25 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/01 00:27:19 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct	s_data {
 	char		*addr;
 	int			bits_per_pixel;
 	int			line_length;
-//	int			endian;
 }				t_data;
 
 //img.c
