@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 00:55:50 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 18:22:19 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/03 18:41:38 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	*load_img(void *asset, t_data *data, char *path)
 	asset = mlx_xpm_file_to_image(data->mlx, path, &width, &height);
 	if (asset == NULL)
 	{
-		ft_putstr_fd("error : chargement image xpm", 1);
+		ft_putstr_fd("error : chargement image xpm", 2);
 		error_img(data, cmp);
 		exit(EXIT_FAILURE);
 	}
@@ -62,7 +62,7 @@ void	load_imgs(t_data *data)
 	data->assets.grid = load_img(data->assets.grid, data, "Grid.xpm");
 	data->assets.player = load_img(data->assets.player, data, "Player.xpm");
 	data->assets.exit = load_img(data->assets.exit, data, "Exit.xpm");
-	data->assets.collec1 = load_img(data->assets.exit, data, "Exit.xpm");
+	data->assets.collec1 = load_img(data->assets.collec1, data, "Collec.xpm");
 }
 
 void	destroy_imgs(t_data *data)

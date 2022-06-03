@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 02:20:22 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/01 00:51:20 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/03 18:40:15 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	error_parsing(int cas)
 {
 	if (cas == 0)
-		ft_putstr_fd("error : nom fichier n est pas une map .ber", 1);
+		ft_putstr_fd("error : nom fichier n est pas une map .ber", 2);
 	if (cas == 1)
-		ft_putstr_fd("error : le fichier n est pas un .ber", 1);
+		ft_putstr_fd("error : le fichier n est pas un .ber", 2);
 	if (cas == 2)
-		ft_putstr_fd("error : nombres d arguments", 1);
+		ft_putstr_fd("error : nombres d arguments", 2);
 	exit(EXIT_FAILURE);
 }
 

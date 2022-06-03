@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:09:58 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/01 00:40:35 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/03 18:41:23 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	max_i(t_data *data)
 
 void	error_wall(t_data *data)
 {
-	ft_putstr_fd("error : Map non ferme par des murs", 1);
+	ft_putstr_fd("error : Map non ferme par des murs", 2);
 	win_close(data);
 }
 
@@ -118,7 +118,7 @@ int	verif(char *str)
 
 void	error_map(t_data *img)
 {
-	ft_putstr_fd("error : map non prise en charge", 1);
+	ft_putstr_fd("error : map non prise en charge", 2);
 	destroy_imgs(img);
 	mlx_clear_window(img->mlx, img->mlx_win);
 	mlx_destroy_window(img->mlx, img->mlx_win);
