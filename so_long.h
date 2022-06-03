@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/01 00:27:19 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/01 01:21:18 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	move_right(t_data *data, int move);
 //where_player.c
 int	get_player_i(t_data data);
 int	get_player_j(t_data data);
+int	get_collec(t_data data);
 
 
 #endif

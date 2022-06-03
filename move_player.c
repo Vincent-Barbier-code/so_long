@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:38:26 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/31 20:48:18 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/01 01:28:12 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	move_top(t_data *data, int move)
 
 	Pi = get_player_i(*data);
 	Pj = get_player_j(*data);
-	if ((*data).map[Pj - 1][Pi] == 'E')
+	if ((*data).map[Pj - 1][Pi] == 'E' && !get_collec(*data))
 		win_close(data);
-	if ((*data).map[Pj - 1][Pi] != '1')
+	if ((*data).map[Pj - 1][Pi] != '1' && (*data).map[Pj - 1][Pi] != 'E')
 	{
 		(*data).map[Pj - 1][Pi] = 'P';
 		(*data).map[Pj][Pi] = '0';
@@ -38,9 +38,9 @@ int	move_bot(t_data *data, int move)
 
 	Pi = get_player_i(*data);
 	Pj = get_player_j(*data);
-	if ((*data).map[Pj + 1][Pi] == 'E')
+	if ((*data).map[Pj + 1][Pi] == 'E' && !get_collec(*data))
 		win_close(data);
-	if ((*data).map[Pj + 1][Pi] != '1')
+	if ((*data).map[Pj + 1][Pi] != '1' && (*data).map[Pj + 1][Pi] != 'E')
 	{
 		(*data).map[Pj + 1][Pi] = 'P';
 		(*data).map[Pj][Pi] = '0';
@@ -57,9 +57,9 @@ int	move_left(t_data *data, int move)
 
 	Pi = get_player_i(*data);
 	Pj = get_player_j(*data);
-	if ((*data).map[Pj][Pi - 1] == 'E')
+	if ((*data).map[Pj][Pi - 1] == 'E' && !get_collec(*data))
 		win_close(data);
-	if ((*data).map[Pj][Pi - 1] != '1')
+	if ((*data).map[Pj][Pi - 1] != '1' && (*data).map[Pj][Pi - 1] != 'E')
 	{
 		(*data).map[Pj][Pi - 1] = 'P';
 		(*data).map[Pj][Pi] = '0';
@@ -76,9 +76,9 @@ int	move_right(t_data *data, int move)
 
 	Pi = get_player_i(*data);
 	Pj = get_player_j(*data);
-	if ((*data).map[Pj][Pi + 1] == 'E')
+	if ((*data).map[Pj][Pi + 1] == 'E' && !get_collec(*data))
 		win_close(data);
-	if ((*data).map[Pj][Pi + 1] != '1')
+	if ((*data).map[Pj][Pi + 1] != '1' && (*data).map[Pj][Pi + 1] != 'E')
 	{
 		(*data).map[Pj][Pi + 1] = 'P';
 		(*data).map[Pj][Pi] = '0';
