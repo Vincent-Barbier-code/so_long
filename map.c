@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:33:31 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/01 01:10:42 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/07 06:56:47 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	*who_asset(t_data data, char *str, char c)
 	}
 	return (asset);
 }
+
 void	*who_asset2(t_data data, char c)
 {
 	void	*asset;
@@ -72,13 +73,13 @@ void	aff_map(t_data *data)
 
 	i = 0;
 	j = 0;
-
 	while (data->map[j])
 	{
 		while (data->map[j][i + 1])
 		{
 			asset = who_asset2(*data, data->map[j][i]);
-			mlx_put_image_to_window(data->mlx, data->mlx_win, asset, i * 200, j * 200);	
+			mlx_put_image_to_window(data->mlx, data->mlx_win, asset, \
+			i * 200, j * 200);
 			i++;
 		}
 		i = 0;
@@ -96,14 +97,15 @@ char	*new_map(t_data data, char *str)
 	while (str[i + 1])
 	{
 		asset = who_asset(data, str, str[i]);
-		mlx_put_image_to_window(data.mlx, data.mlx_win, asset, i * 200, j * 200);	
+		mlx_put_image_to_window(data.mlx, data.mlx_win, asset, \
+		i * 200, j * 200);
 		i++;
 	}
 	j++;
 	return (str);
 }
 
-void init_map(t_data *data, char *nom, int ligne)
+void	init_map(t_data *data, char *nom, int ligne)
 {
 	int		fd;
 	char	*str;

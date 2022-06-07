@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:59:45 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/01 01:20:33 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/07 07:06:18 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	get_player_i(t_data data)
 
 	i = 0;
 	j = 0;
-	while(data.map[j])
+	while (data.map[j])
 	{
-		while(data.map[j][i])
+		while (data.map[j][i])
 		{
 			if (data.map[j][i] == 'P')
 				return (i);
@@ -39,9 +39,9 @@ int	get_player_j(t_data data)
 
 	i = 0;
 	j = 0;
-	while(data.map[j])
+	while (data.map[j])
 	{
-		while(data.map[j][i])
+		while (data.map[j][i])
 		{
 			if (data.map[j][i] == 'P')
 				return (j);
@@ -59,9 +59,9 @@ int	get_collec(t_data data)
 
 	i = 0;
 	j = 0;
-	while(data.map[j])
+	while (data.map[j])
 	{
-		while(data.map[j][i])
+		while (data.map[j][i])
 		{
 			if (data.map[j][i] == 'C')
 				return (1);

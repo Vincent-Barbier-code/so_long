@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:09:58 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/03 18:41:23 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/07 07:04:30 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	error_wall(t_data *data)
 	win_close(data);
 }
 
-int verif_wall(t_data *data)
+int	verif_wall(t_data *data)
 {
 	int	i;
 	int	j;
@@ -70,10 +70,10 @@ int	verif_rect(char *str)
 		return (0);
 	len_ligne = ft_strlen(str);
 	deb++;
-	return (1);	
+	return (1);
 }
 
-int	verif_nb (char *str)
+int	verif_nb(char *str)
 {
 	static int	collect = 0;
 	static int	exit = 0;
@@ -83,7 +83,6 @@ int	verif_nb (char *str)
 	i = 0;
 	while (str[i])
 	{
-		// Ajoute un cas pour le collectible 2 si j en rajoute
 		if (str[i] == 'C')
 			collect++;
 		else if (str[i] == 'E')
@@ -154,7 +153,7 @@ int	ligne_verif(char *nom, t_data *data)
 		if (str == NULL)
 		{
 			suite_lv(ok, str, fd, data);
-			return(ligne);
+			return (ligne);
 		}
 		ok = verif(str);
 		ligne++;

@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:38:26 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/01 01:28:12 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/07 06:59:40 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	move_top(t_data *data, int move)
 {
-	int	Pi;
-	int Pj;
+	int	pi;
+	int	pj;
 
-	Pi = get_player_i(*data);
-	Pj = get_player_j(*data);
-	if ((*data).map[Pj - 1][Pi] == 'E' && !get_collec(*data))
+	pi = get_player_i(*data);
+	pj = get_player_j(*data);
+	if ((*data).map[pj - 1][pi] == 'E' && !get_collec(*data))
 		win_close(data);
-	if ((*data).map[Pj - 1][Pi] != '1' && (*data).map[Pj - 1][Pi] != 'E')
+	if ((*data).map[pj - 1][pi] != '1' && (*data).map[pj - 1][pi] != 'E')
 	{
-		(*data).map[Pj - 1][Pi] = 'P';
-		(*data).map[Pj][Pi] = '0';
+		(*data).map[pj - 1][pi] = 'P';
+		(*data).map[pj][pi] = '0';
 		move++;
 		printf("nombre move = %d \n", move);
 	}
@@ -33,17 +33,17 @@ int	move_top(t_data *data, int move)
 
 int	move_bot(t_data *data, int move)
 {
-	int	Pi;
-	int Pj;
+	int	pi;
+	int	pj;
 
-	Pi = get_player_i(*data);
-	Pj = get_player_j(*data);
-	if ((*data).map[Pj + 1][Pi] == 'E' && !get_collec(*data))
+	pi = get_player_i(*data);
+	pj = get_player_j(*data);
+	if ((*data).map[pj + 1][pi] == 'E' && !get_collec(*data))
 		win_close(data);
-	if ((*data).map[Pj + 1][Pi] != '1' && (*data).map[Pj + 1][Pi] != 'E')
+	if ((*data).map[pj + 1][pi] != '1' && (*data).map[pj + 1][pi] != 'E')
 	{
-		(*data).map[Pj + 1][Pi] = 'P';
-		(*data).map[Pj][Pi] = '0';
+		(*data).map[pj + 1][pi] = 'P';
+		(*data).map[pj][pi] = '0';
 		move++;
 		printf("nombre move = %d \n", move);
 	}
@@ -52,17 +52,17 @@ int	move_bot(t_data *data, int move)
 
 int	move_left(t_data *data, int move)
 {
-	int	Pi;
-	int Pj;
+	int	pi;
+	int	pj;
 
-	Pi = get_player_i(*data);
-	Pj = get_player_j(*data);
-	if ((*data).map[Pj][Pi - 1] == 'E' && !get_collec(*data))
+	pi = get_player_i(*data);
+	pj = get_player_j(*data);
+	if ((*data).map[pj][pi - 1] == 'E' && !get_collec(*data))
 		win_close(data);
-	if ((*data).map[Pj][Pi - 1] != '1' && (*data).map[Pj][Pi - 1] != 'E')
+	if ((*data).map[pj][pi - 1] != '1' && (*data).map[pj][pi - 1] != 'E')
 	{
-		(*data).map[Pj][Pi - 1] = 'P';
-		(*data).map[Pj][Pi] = '0';
+		(*data).map[pj][pi - 1] = 'P';
+		(*data).map[pj][pi] = '0';
 		move++;
 		printf("nombre move = %d \n", move);
 	}
@@ -71,17 +71,17 @@ int	move_left(t_data *data, int move)
 
 int	move_right(t_data *data, int move)
 {
-	int	Pi;
-	int Pj;
+	int	pi;
+	int	pj;
 
-	Pi = get_player_i(*data);
-	Pj = get_player_j(*data);
-	if ((*data).map[Pj][Pi + 1] == 'E' && !get_collec(*data))
+	pi = get_player_i(*data);
+	pj = get_player_j(*data);
+	if ((*data).map[pj][pi + 1] == 'E' && !get_collec(*data))
 		win_close(data);
-	if ((*data).map[Pj][Pi + 1] != '1' && (*data).map[Pj][Pi + 1] != 'E')
+	if ((*data).map[pj][pi + 1] != '1' && (*data).map[pj][pi + 1] != 'E')
 	{
-		(*data).map[Pj][Pi + 1] = 'P';
-		(*data).map[Pj][Pi] = '0';
+		(*data).map[pj][pi + 1] = 'P';
+		(*data).map[pj][pi] = '0';
 		move++;
 		printf("nombre move = %d \n", move);
 	}
