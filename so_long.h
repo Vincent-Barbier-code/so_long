@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/07 07:16:14 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/07 08:29:24 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <unistd.h>
 # include "mlx.h"
 # include "./get_next_line/get_next_line.h"
+# include "./ft_printf/ft_printf.h"
 # include <fcntl.h>
 
 typedef struct s_assets
@@ -63,25 +64,27 @@ void	new_window(t_data *img);
 void	parsing(int ac, char *av);
 
 //basique.c
-//int		ft_strlen(char *str);
 int		ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
 
 //map.c
-void	*who_asset(t_data data, char *str, char c);
+void	aff_map(t_data *data);
 char	*new_map(t_data data, char *str);
-int		ligne_verif(char *nom, t_data *data);
 void	init_map(t_data *data, char *nom, int ligne);
+
+//free_map.c
 void	free_map(t_data *data);
 
 //verif_map.c
 int		verif_wall(t_data *data);
-int		verif_nb(char *str);
-int		verif(char *str);
-void	init_map(t_data *data, char *nom, int ligne);
+int		ligne_verif(char *nom, t_data *data);
+
+//verif_map_extra.c
+int		max_j(t_data *data);
+int		max_i(t_data *data);
+void	error_wall(t_data *data);
 void	error_map(t_data *img);
-//void	aff_map(t_data data);
-void	aff_map(t_data *data);
+int		verif_rect(char *str);
 
 //move_player.c
 int		move_top(t_data *data, int move);

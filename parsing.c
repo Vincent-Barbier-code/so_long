@@ -6,13 +6,13 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 02:20:22 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/03 18:40:15 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/07 08:00:25 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	error_parsing(int cas)
+static void	error_parsing(int cas)
 {
 	if (cas == 0)
 		ft_putstr_fd("error : nom fichier n est pas une map .ber", 2);

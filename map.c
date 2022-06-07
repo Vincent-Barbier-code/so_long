@@ -6,26 +6,13 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:33:31 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/07 06:56:47 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/07 08:07:22 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_map(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->map[i])
-	{
-		free(data->map[i]);
-		i++;
-	}
-	free(data->map);
-}
-
-void	*who_asset(t_data data, char *str, char c)
+static void	*who_asset(t_data data, char *str, char c)
 {
 	void	*asset;
 
@@ -33,7 +20,7 @@ void	*who_asset(t_data data, char *str, char c)
 		asset = data.assets.wall;
 	else if (c == '0')
 		asset = data.assets.grid;
-	else if (c == 'C') // Ajouter collectibles
+	else if (c == 'C')
 		asset = data.assets.collec1;
 	else if (c == 'E')
 		asset = data.assets.exit;
@@ -48,7 +35,7 @@ void	*who_asset(t_data data, char *str, char c)
 	return (asset);
 }
 
-void	*who_asset2(t_data data, char c)
+static void	*who_asset2(t_data data, char c)
 {
 	void	*asset;
 
@@ -56,8 +43,8 @@ void	*who_asset2(t_data data, char c)
 		asset = data.assets.wall;
 	else if (c == '0')
 		asset = data.assets.grid;
-	else if (c == 'C') // Ajouter collectibles
-		asset = data.assets.collec1;
+	else if (c == 'C')
+			asset = data.assets.collec1;
 	else if (c == 'E')
 		asset = data.assets.exit;
 	else if (c == 'P')
@@ -118,7 +105,6 @@ void	init_map(t_data *data, char *nom, int ligne)
 	while (str)
 	{
 		data->map[i] = ft_strdup(new_map(*data, str));
-		//printf("%s", data->map[i]);
 		free(str);
 		i++;
 		str = get_next_line(fd);

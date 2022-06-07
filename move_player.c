@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:38:26 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/07 06:59:40 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/07 08:28:43 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	move_top(t_data *data, int move)
 		(*data).map[pj - 1][pi] = 'P';
 		(*data).map[pj][pi] = '0';
 		move++;
-		printf("nombre move = %d \n", move);
+		ft_printf("nombre move = %d \n", move);
 	}
 	return (move);
 }
@@ -45,7 +45,7 @@ int	move_bot(t_data *data, int move)
 		(*data).map[pj + 1][pi] = 'P';
 		(*data).map[pj][pi] = '0';
 		move++;
-		printf("nombre move = %d \n", move);
+		ft_printf("nombre move = %d \n", move);
 	}
 	return (move);
 }
@@ -64,7 +64,7 @@ int	move_left(t_data *data, int move)
 		(*data).map[pj][pi - 1] = 'P';
 		(*data).map[pj][pi] = '0';
 		move++;
-		printf("nombre move = %d \n", move);
+		ft_printf("nombre move = %d \n", move);
 	}
 	return (move);
 }
@@ -83,7 +83,7 @@ int	move_right(t_data *data, int move)
 		(*data).map[pj][pi + 1] = 'P';
 		(*data).map[pj][pi] = '0';
 		move++;
-		printf("nombre move = %d \n", move);
+		ft_printf("nombre move = %d \n", move);
 	}
 	return (move);
 }
