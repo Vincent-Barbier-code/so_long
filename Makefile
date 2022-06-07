@@ -1,17 +1,17 @@
 SRC = main.c windows.c \
 	img.c parsing.c \
-	basique.c map.c \
+	map.c \
 	free_map.c verif_map.c \
 	verif_map_extra.c \
 	move_player.c where_player.c \
-	$(PATH_GNL)get_next_line_utils.c \
-	$(PATH_GNL)get_next_line.c
+	$(PATH_GNL)_utils.c \
+	$(PATH_GNL).c
 OBJ = ${SRC:.c=.o}
 NAME = so_long
 FLAG = -Wall -Wextra -Werror
 DEPS = so_long.h Makefile
 
-PATH_GNL = ./get_next_line/
+PATH_GNL = ./get_next_line/get_next_line
 FT_PRINTF =  -L ./ft_printf -lftprintf
 all : $(NAME)
 

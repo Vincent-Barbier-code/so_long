@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/07 08:29:24 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/07 08:30:51 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,6 @@ void	new_window(t_data *img);
 
 //parsing.c
 void	parsing(int ac, char *av);
-
-//basique.c
-int		ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *str, int fd);
 
 //map.c
 void	aff_map(t_data *data);
