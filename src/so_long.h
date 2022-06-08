@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:55:41 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/07 11:17:37 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/08 13:55:42 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <unistd.h>
-# include "mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "../get_next_line/get_next_line.h"
 # include "../ft_printf/ft_printf.h"
 # include <fcntl.h>
