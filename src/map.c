@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:33:31 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/11 01:00:48 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:45:33 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	aff_map(t_data *data)
 
 	i = 0;
 	j = 0;
-
 	while (data->map[j])
 	{
 		while (data->map[j][i + 1])
