@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:33:31 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/06/10 14:19:26 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:00:48 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,14 @@ void	aff_map(t_data *data)
 
 	i = 0;
 	j = 0;
+
 	while (data->map[j])
 	{
 		while (data->map[j][i + 1])
 		{
 			asset = who_asset2(*data, data->map[j][i]);
 			mlx_put_image_to_window(data->mlx, data->mlx_win, asset, \
-			i * 200, j * 200);
+				i * 200, j * 200);
 			i++;
 		}
 		i = 0;

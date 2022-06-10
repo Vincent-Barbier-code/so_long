@@ -18,14 +18,18 @@ OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC_FILES))
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@if [ ! -d "$(dir $@)" ]; then mkdir -p $(dir $@); fi
-	gcc $(CFLAGS) -Imlx_linux -O3 -c $< -o $@
+	gcc $(CFLAGS) -Imlx_linux -c $< -o $@
 
 $(NAME): $(OBJ) $(DEPS)
-	gcc $(CFLAGS) $(OBJ) $(FT_PRINTF) -L minilibx-linux -Imlx_linux -lXext -lX11 -lz -g3 -o $(NAME) -lm
+	$(MAKE) -C ft_printf/
+	$(MAKE) -C minilibx-linux/
+	gcc $(CFLAGS) $(OBJ) $(FT_PRINTF) -L minilibx-linux ./minilibx/libmlx_Linux.a -Imlx_linux -lXext -lX11 -lz -g3 -o $(NAME) -lm
 
 all : $(NAME)
 
 clean :
+	$(MAKE) clean -C ft_printf/
+	$(MAKE) clean -C minilibx-linux/
 	rm -f $(OBJ)
 
 fclean : clean
