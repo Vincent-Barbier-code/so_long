@@ -1,12 +1,12 @@
 NAME = so_long
-FLAG = -Wall -Wextra -Werror
-DEPS = $(PATH_SRC)so_long.h Makefile
-PATH_SRC = src/
-PATH_OBJ = obj/
-PATH_GNL = get_next_line/
+CFLAGS = -Wall -Wextra -Werror
+DEPS = $(SRC_DIR)so_long.h Makefile
+SRC_DIR = src/
+OBJ_DIR = obj/
+GN_DIR = get_next_line/
 FT_PRINTF =  -L ./ft_printf -lftprintf
 
-SRC_FILES = $(addprefix $(PATH_SRC), main.c windows.c \
+SRC_FILES = $(addprefix $(SRC_DIR), main.c windows.c \
 	img.c parsing.c \
 	map.c \
 	free_map.c verif_map.c \
@@ -14,17 +14,14 @@ SRC_FILES = $(addprefix $(PATH_SRC), main.c windows.c \
 	move_player.c where_player.c \
 	get_next_line_utils.c \
 	get_next_line.c)
+OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC_FILES))
 
-#SRC = $(addprefix $(PATH_SRC), $(SRC_FILES))
-OBJ = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(SRC_FILES))
-
-$(PATH_OBJ)%.o: $(SRC_PATH)%.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@if [ ! -d "$(dir $@)" ]; then mkdir -p $(dir $@); fi
-	gcc $(FLAG) -Imlx_linux -O3 -c $< -o $@
+	gcc $(CFLAGS) -Imlx_linux -O3 -c $< -o $@
 
 $(NAME): $(OBJ) $(DEPS)
-	$(make) -C ft_printf/
-	gcc $(FLAG) $(OBJ) $(FT_PRINTF) -L minilibx-linux -Imlx_linux -lXext -lX11 -lz -g3 -o $(NAME) -lm
+	gcc $(CFLAGS) $(OBJ) $(FT_PRINTF) -L minilibx-linux -Imlx_linux -lXext -lX11 -lz -g3 -o $(NAME) -lm
 
 all : $(NAME)
 
