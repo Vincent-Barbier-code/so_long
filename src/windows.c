@@ -6,7 +6,7 @@
 /*   By: vbarbier <vbarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 00:59:00 by vbarbier          #+#    #+#             */
-/*   Updated: 2022/05/30 18:59:56 by vbarbier         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:15:56 by vbarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ void	new_window(t_data *img)
 	width = 2800;
 	height = 1600;
 	img->mlx = mlx_init();
+	if (img->mlx)
+		exit(1);
 	img->mlx_win = mlx_new_window(img->mlx, width, height, "so_long");
 }
