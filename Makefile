@@ -16,16 +16,14 @@ SRC_FILES = $(addprefix $(SRC_DIR), main.c windows.c \
 	get_next_line.c)
 OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC_FILES))
 
-$(BEFORE):
-	$(MAKE) -C minilibx-linux/
-
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@if [ ! -d "$(dir $@)" ]; then mkdir -p $(dir $@); fi
 	gcc $(CFLAGS) -Imlx_linux -c $< -o $@
 
-$(NAME): $(BEFORE) $(OBJ) $(DEPS)
+$(NAME): $(OBJ) $(DEPS)
+	$(MAKE) -C minilibx-linux/
 	$(MAKE) -C ft_printf/
-	gcc $(CFLAGS) $(OBJ) $(FT_PRINTF) -L minilibx-linux ./minilibx/libmlx_Linux.a -Imlx_linux -lXext -lX11 -lz -g3 -o $(NAME) -lm
+	gcc $(CFLAGS) $(OBJ) $(FT_PRINTF) -L minilibx-linux ./minilibx-linux/libmlx.a -Imlx_linux -lXext -lX11 -lz -g3 -o $(NAME) -lm
 
 all : $(NAME)
 
